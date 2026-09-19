@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <!-- STREAMING_CHUNK:Configuring definitions, gradients, and cinematic filters... -->
+  <defs>
+    <!-- Background Vignette -->
+    <radialGradient id="stage-bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0a0c14"/>
+      <stop offset="55%" stop-color="#030407"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+    <!-- Chrome Brushed Metallic Gradient (High-contrast steel/silver) -->
+    <linearGradient id="chrome-left-facet" x1="0%" y1="100%" x2="70%" y2="0%">
+      <stop offset="0%" stop-color="#8c93a0"/>
+      <stop offset="30%" stop-color="#bcc4d1"/>
+      <stop offset="60%" stop-color="#f8fafc"/>
+      <stop offset="85%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+
+    <linearGradient id="chrome-pillar-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="25%" stop-color="#94a3b8"/>
+      <stop offset="65%" stop-color="#e2e8f0"/>
+      <stop offset="90%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+
+    <linearGradient id="chrome-right-slope" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="25%" stop-color="#e2e8f0"/>
+      <stop offset="50%" stop-color="#cbd5e1"/>
+      <stop offset="80%" stop-color="#64748b"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+
+    <!-- Center V Inner Bevel & Depth Shadow -->
+    <linearGradient id="inner-bevel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#94a3b8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Electric Royal/Cobalt Blue Gradient for Play Button -->
+    <linearGradient id="electric-blue-play" x1="0%" y1="100%" x2="100%" y2="30%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="35%" stop-color="#1d4ed8"/>
+      <stop offset="75%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <linearGradient id="play-sheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#2563eb" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- Neon Glow Filter for Blue Play Icon -->
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16" result="blur1"/>
+      <feGaussianBlur stdDeviation="30" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Ambient Subtle Glow for Background Bleed -->
+    <filter id="ambient-blue" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+
+    <!-- Film Perforation Mask for Left Pillar -->
+    <mask id="perforations-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="800">
+      <rect x="0" y="0" width="800" height="800" fill="#ffffff"/>
+      <!-- 3 Rounded Perforations on Left Edge -->
+      <rect x="220" y="278" width="22" height="38" rx="6" fill="#000000"/>
+      <rect x="220" y="342" width="22" height="38" rx="6" fill="#000000"/>
+      <rect x="220" y="406" width="22" height="38" rx="6" fill="#000000"/>
+    </mask>
+  </defs>
+
+  <!-- STREAMING_CHUNK:Rendering canvas backdrop and atmospheric lighting... -->
+  <!-- Pure Black / Subtle Vignette Stage -->
+  <rect width="800" height="800" fill="url(#stage-bg)"/>
+
+  <!-- Subtle Blue Ambient Bleed behind Play Button -->
+  <circle cx="510" cy="425" r="90" fill="#1d4ed8" opacity="0.25" filter="url(#ambient-blue)"/>
+
+  <!-- STREAMING_CHUNK:Rendering stylized M logo geometry... -->
+  <g id="modern-m-logo">
+    <!-- Left Vertical Film-Strip Pillar (Bottom section below diagonal slit) -->
+    <path d="M 200,270 L 270,325 L 270,505 L 200,505 Z"
+          fill="url(#chrome-pillar-grad)"
+          mask="url(#perforations-mask)"/>
+
+    <!-- Subtle Bevel Inner Light on Perforation Holes -->
+    <g opacity="0.45" stroke="#ffffff" stroke-width="1.2" fill="none">
+      <rect x="220" y="278" width="22" height="38" rx="6"/>
+      <rect x="220" y="342" width="22" height="38" rx="6"/>
+      <rect x="220" y="406" width="22" height="38" rx="6"/>
+    </g>
+
+    <!-- Main Diagonal V-Stroke (From top-left apex down to center valley, then up to top-right peak) -->
+    <!-- Top-Left Crest & Left Diagonal Arm -->
+    <polygon points="200,215 200,262 270,317 356,386 356,336 200,215"
+             fill="url(#chrome-left-facet)"/>
+
+    <!-- Left Angular Bevel Edge (Highlights the cut facet and joint) -->
+    <polygon points="200,262 270,317 270,325 200,270"
+             fill="#0f172a"
+             opacity="0.95"/>
+
+    <!-- Diagonal Highlight Rim on Left Crest -->
+    <polyline points="200,262 200,215 356,336"
+              stroke="#ffffff"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              fill="none"
+              opacity="0.85"/>
+
+    <!-- STREAMING_CHUNK:Rendering center valley and right faceted arm... -->
+    <!-- Center Valley Joint -->
+    <polygon points="356,336 356,386 480,260 480,210"
+             fill="url(#chrome-pillar-grad)"/>
+
+    <!-- Right Crest & Diagonal Outer Slope with Recessed Play Cavity -->
+    <!-- Mapped accurately around the play button cut-out notch with rounded recess -->
+    <path d="M 480,210 
+             L 512,242 
+             L 692,525 
+             L 634,525 
+             L 556,400 
+             C 550,388 535,385 522,395
+             L 480,432 
+             L 480,260 Z"
+          fill="url(#chrome-right-slope)"/>
+
+    <!-- Inner Ambient Occlusion & Bevel Depth inside Center V -->
+    <polygon points="270,325 356,386 480,260 480,266 356,396 270,328"
+             fill="url(#inner-bevel)"/>
+
+    <!-- Right Leg Chamfer / Crisp Light Rim along the Top Slope -->
+    <line x1="480" y1="210" x2="692" y2="525" stroke="#ffffff" stroke-width="1.8" opacity="0.9"/>
+
+    <!-- STREAMING_CHUNK:Rendering embedded electric blue play button... -->
+    <!-- Play Button Ambient Glow Layer -->
+    <path d="M 460,345 
+             L 460,490 
+             L 568,424 
+             A 12,12 0 0 0 568,411 
+             Z" 
+          fill="#2563eb" 
+          opacity="0.4" 
+          filter="url(#neon-glow)"/>
+
+    <!-- Primary Play Button (Right-Pointing Triangle) -->
+    <path d="M 460,345 
+             L 460,490 
+             L 568,424 
+             A 12,12 0 0 0 568,411 
+             Z" 
+          fill="url(#electric-blue-play)"/>
+
+    <!-- Specular Highlight Overlay on Play Button -->
+    <path d="M 460,345 
+             L 460,490 
+             L 568,424 
+             A 12,12 0 0 0 568,411 
+             Z" 
+          fill="url(#play-sheen)"/>
+
+    <!-- Play Button Crisp Border Stroke -->
+    <path d="M 460,345 
+             L 460,490 
+             L 568,424 
+             A 12,12 0 0 0 568,411 
+             Z" 
+          fill="none" 
+          stroke="#93c5fd" 
+          stroke-width="1.2" 
+          stroke-opacity="0.85"/>
+  </g>
+</svg>
